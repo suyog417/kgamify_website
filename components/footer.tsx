@@ -71,11 +71,11 @@ export default function Footer() {
                   Help Center
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/faqs" className="text-gray-400 hover:text-white">
                   FAQs
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contacts" className="text-gray-400 hover:text-white">
                   Contact Us

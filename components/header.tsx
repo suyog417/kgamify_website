@@ -120,7 +120,7 @@ export default function Header() {
             Features
           </Link>
           <Link
-            href="/#"
+            href="/gallery"
             className={`font-medium transition-colors ${
               isActive("/#") ? "text-white border-b-2 border-white" : "hover:text-orange-200"
             }`}

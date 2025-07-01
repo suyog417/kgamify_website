@@ -9,7 +9,7 @@ import { Briefcase, Gamepad2, GraduationCap, Handshake, Trophy } from "lucide-re
 
 
 const tabs = [
-  "Events & Workshops",
+  // "Events & Workshops",
   "Championships",
   "Analytics",
   "Value Addition",
@@ -34,17 +34,17 @@ const featureVectors = [
 ]
 
 const tabContent: TabContent = {
-  "Events & Workshops": {
-    title: "Events & Workshops",
-    description:
-      "kGamify hosts a variety of interactive events and workshops to help users stay engaged and connected with industry trends. These sessions are led by experts and available in both online and offline modes, offering flexibility and practical insights.",
-    points: [
-      "Online and physical location options available",
-      "Resolve doubts through interactive Q&A sessions",
-      "Receive career guidance from industry professionals",
-      "Free or discounted access for championship participants",
-    ],
-  },
+  // "Events & Workshops": {
+  //   title: "Events & Workshops",
+  //   description:
+  //     "kGamify hosts a variety of interactive events and workshops to help users stay engaged and connected with industry trends. These sessions are led by experts and available in both online and offline modes, offering flexibility and practical insights.",
+  //   points: [
+  //     "Online and physical location options available",
+  //     "Resolve doubts through interactive Q&A sessions",
+  //     "Receive career guidance from industry professionals",
+  //     "Free or discounted access for championship participants",
+  //   ],
+  // },
   "Championships" : {
     title: "Championships",
     description: "kGamify’s assessment system is built around challenging and engaging question formats that test real-world problem-solving skills. The questions dynamically adjust based on the user’s current performance.",
@@ -182,7 +182,7 @@ const partnerCardItems1: PartnerCardItem[] = [
 
 export default function FeaturesPage() {
 
-  const [activeTab, setActiveTab] = useState<Tab>("Events & Workshops");
+  const [activeTab, setActiveTab] = useState<Tab>("Championships");
 
   const content = tabContent[activeTab];
   
@@ -228,13 +228,13 @@ export default function FeaturesPage() {
       {/* Content */}
       <div className="bg-white mt-10 max-w-2xl w-full rounded-2xl shadow-lg p-8 text-center">
         <div className="flex justify-center mb-4">
-          {activeTab === "Events & Workshops" && (
+          {/* {activeTab === "Events & Workshops" && (
             <img
               src="/vectors/events_and_workshops.png"
               alt="Events & Workshops Illustration"
               className="h-32"
             />
-          )}
+          )} */}
           {activeTab === "Championships" && (
             <img
               src="/vectors/championships.png"

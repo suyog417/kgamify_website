@@ -8,20 +8,25 @@ import { Phone, Mail, MapPin } from "lucide-react"
 import ReCAPTCHA from "react-google-recaptcha"
 
 export default function ContactsPage() {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-  })
-    const recaptchaRef: any = useRef(null);
+  });
+  const recaptchaRef: any = useRef(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-    const [captchaVerified, setCaptchaVerified] = useState(false);
-    const onChange = (value: string | null) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const onChange = (value: string | null) => {
     if (value) {
       setCaptchaVerified(true);
     } else {
@@ -33,13 +38,42 @@ export default function ContactsPage() {
     console.log("Google recaptcha loaded just fine");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
-    alert("Message sent! We'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!captchaVerified) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
+
+    const { name, email, subject, message } = formData;
+
+    const url = `https://kgamify.in/championshipmaker/apis/post_contact.php?name=${encodeURIComponent(
+      name
+    )}&email=${encodeURIComponent(email)}&subject=${encodeURIComponent(
+      subject
+    )}&message=${encodeURIComponent(message)}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+      });
+
+      if (response.ok) {
+        const result = await response.json(); // If the API returns JSON
+        console.log("API response:", result);
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setCaptchaVerified(false);
+        recaptchaRef.current.reset();
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Error occurred. Please try again later.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -47,7 +81,7 @@ export default function ContactsPage() {
       <div className="bg-orange-50">
         <div className="container mx-auto grid px-4 py-12 md:py-1 md:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <h1 className="mb-4 text-3xl font-bold text-gray-900">Get in Touch with the kGamify Team</h1>
+            <h1 className="mb-4 text-5xl font-bold text-gray-900">Get in Touch with the kGamify Team</h1>
             <p className="mb-6 text-gray-700">
               Whether you're a user, partner, educator, or just curious about what we do — we'd love to hear from you!
               Fill out the form below or drop us a message, and we'll get back to you soon.
@@ -63,8 +97,8 @@ export default function ContactsPage() {
               </div>
             </div>
           </div>
-          <div className="relative flex items-center justify-center w-full h-full">
-            <div className="hidden md:relative">
+          <div className="hidden relative md:flex items-center justify-center w-full h-full">
+            <div className="relative">
               {/* <div className="absolute inset-0 bg-gradient-to-r from-orange-50 via-orange-50/70 to-transparent z-10"></div> */}
               <Image
                 src="/contact_us_illustrations.svg"
@@ -159,16 +193,22 @@ export default function ContactsPage() {
                   ></textarea>
                 </div>
                 <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                onChange={onChange}
-                asyncScriptOnLoad={asyncScriptOnLoad}
-              />
+                  ref={recaptchaRef}
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  onChange={onChange}
+                  asyncScriptOnLoad={asyncScriptOnLoad}
+                />
+
                 <button
                   type="submit"
-                  className="w-full rounded-md bg-orange-500 px-6 py-3 font-medium text-white transition hover:bg-orange-600"
+                  disabled={loading || !captchaVerified}
+                  className={`px-6 py-2 rounded-md font-medium transition ${
+                    loading || !captchaVerified
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-[#ff8200] hover:bg-orange-600 text-white"
+                  }`}
                 >
-                  Send Message
+                  {loading ? "Submitting..." : "Submit"}
                 </button>
               </form>
             </div>
