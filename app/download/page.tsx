@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Check, Bell, Play, Star, Gift } from "lucide-react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faApple, faGooglePlay} from '@fortawesome/free-brands-svg-icons'
+import Head from "next/head"
 
 export default function DownloadPage() {
   const [email, setEmail] = useState("")
@@ -27,6 +28,79 @@ export default function DownloadPage() {
   }
 
   return (
+    <>
+    <Head>
+    <title>Download kGamify App | Android & iOS</title>
+    <meta
+        name="description"
+        content="Get the kGamify app on Android and iOS. Join competitive quiz tournaments, earn rewards, and unlock real-world opportunities. Download now!"
+    />
+    <meta
+        name="keywords"
+        content="download kGamify app, kGamify APK, quiz app download, gamified learning app, Android, iOS, educational game, student competitions"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/download" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Download kGamify App | Android & iOS" />
+    <meta
+        property="og:description"
+        content="Install kGamify and join competitive quizzes. Available on Android and iOS. Learn through play and win real rewards."
+    />
+    <meta property="og:url" content="https://kgamify.in/download" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/download_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Download kGamify App" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Download kGamify App | Android & iOS" />
+    <meta
+        name="twitter:description"
+        content="Ready to compete and win? Download the kGamify app on Android or iOS and start your journey today!"
+    />
+    <meta name="twitter:image" content="/download_preview.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "MobileApplication",
+                "name": "kGamify",
+                "operatingSystem": "Android, iOS",
+                "applicationCategory": "EducationApplication",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "INR"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.7",
+                    "ratingCount": "1024"
+                },
+                "downloadUrl": "https://kgamify.in/download",
+                "screenshot": [
+                    "https://kgamify.in/images/screenshot1.png",
+                    "https://kgamify.in/images/screenshot2.png"
+                ],
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-50 to-white py-16">
@@ -720,5 +794,6 @@ export default function DownloadPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

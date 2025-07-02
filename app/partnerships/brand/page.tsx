@@ -1,14 +1,106 @@
 "use client"
 
 import PartnershipOpportunities from "@/components/reusable-components/partnership-opportunities";
-// import { Button } from "@/components/ui/button";
 import { SquareCheckBig } from "lucide-react";
+import Head from "next/head";
 import Link from "next/link";
-import SteppedLineTo from 'react-lineto';
 import Xarrow from "react-xarrows";
 
+// export const metadata = {
+//     title: "Brand Partnership Opportunities | kGamify - Strategic Marketing Collaborations",
+//     description: "Partner with kGamify for innovative gamification marketing strategies. Drive audience engagement, boost brand visibility, and achieve measurable business growth through strategic collaborations.",
+//     keywords: "brand partnerships, gamification marketing, strategic collaborations, audience engagement, marketing partnerships, business growth, kGamify partnerships",
+//     openGraph: {
+//       title: "Brand Partnership Opportunities | kGamify",
+//       description: "Transform your marketing approach with kGamify's strategic brand partnerships. Amplify engagement and drive growth through innovative gamification.",
+//       url: "https://kgamify.in/partnerships/brand",
+//       siteName: "kGamify",
+//       images: [
+//         {
+//           url: "/brand_partnership_hero.png",
+//           width: 1200,
+//           height: 630,
+//           alt: "kGamify Brand Partnership Opportunities"
+//         }
+//       ],
+//       locale: "en_US",
+//       type: "website"
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: "Brand Partnership Opportunities | kGamify",
+//       description: "Transform your marketing with kGamify's strategic brand partnerships. Drive engagement through innovative gamification strategies.",
+//       images: ["/brand_partnership_hero.png"]
+//     },
+//     robots: {
+//       index: true,
+//       follow: true,
+//       googleBot: {
+//         index: true,
+//         follow: true,
+//         "max-video-preview": -1,
+//         "max-image-preview": "large",
+//         "max-snippet": -1
+//       }
+//     },
+//     alternates: {
+//       canonical: "https://kgamify.in/partnerships/brand"
+//     }
+//   };
+
 export default function BrandPartnershipPage() {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Brand Partnership Opportunities | kGamify",
+        "description": "Strategic brand partnerships with kGamify for innovative gamification marketing solutions",
+        "url": "https://kgamify.com/brand-partnerships",
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Brand Partnership Services",
+            "provider": {
+                "@type": "Organization",
+                "name": "kGamify",
+                "url": "https://kgamify.com"
+            },
+            "serviceType": "Marketing Partnership",
+            "description": "Strategic brand collaborations through gamification marketing"
+        }
+    };
+
     return (
+        <>
+        <Head>
+                <title>Brand Partnership Opportunities | kGamify - Strategic Marketing Collaborations</title>
+                <meta name="description" content="Partner with kGamify for innovative gamification marketing strategies. Drive audience engagement, boost brand visibility, and achieve measurable business growth through strategic collaborations." />
+                <meta name="keywords" content="brand partnerships, gamification marketing, strategic collaborations, audience engagement, marketing partnerships, business growth, kGamify partnerships" />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href="https://kgamify.in/partnerships/brand" />
+                
+                {/* Open Graph */}
+                <meta property="og:title" content="Brand Partnership Opportunities | kGamify" />
+                <meta property="og:description" content="Transform your marketing approach with kGamify's strategic brand partnerships. Amplify engagement and drive growth through innovative gamification." />
+                <meta property="og:url" content="https://kgamify.in/partnerships/brand" />
+                <meta property="og:site_name" content="kGamify" />
+                <meta property="og:image" content="/brand_partnership_hero.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="kGamify Brand Partnership Opportunities" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:type" content="website" />
+                
+                {/* Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Brand Partnership Opportunities | kGamify" />
+                <meta name="twitter:description" content="Transform your marketing with kGamify's strategic brand partnerships. Drive engagement through innovative gamification strategies." />
+                <meta name="twitter:image" content="/brand_partnership_hero.png" />
+                
+                {/* Structured Data */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                />
+            </Head>
         <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
             <div className="bg-orange-50">
@@ -109,5 +201,6 @@ export default function BrandPartnershipPage() {
                 </Link>
             </section>
         </div>
+        </>
     );
 }

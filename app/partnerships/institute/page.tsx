@@ -1,9 +1,69 @@
 'use client';
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function InstitutePartnershipPage() {
     return (
+        <>
+        <Head>
+    <title>Institute Partnership Opportunities | kGamify - Empower Your Students</title>
+    <meta
+        name="description"
+        content="Partner with kGamify to empower your students through gamified learning championships. Enhance engagement, foster healthy competition, and unlock real-world opportunities for your institute."
+    />
+    <meta
+        name="keywords"
+        content="institute partnerships, educational collaboration, student engagement, gamified learning, kGamify for schools, colleges, universities, academic partnerships"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/partnerships/institutes" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Institute Partnership Opportunities | kGamify" />
+    <meta
+        property="og:description"
+        content="Join hands with kGamify to bring competitive learning to your institute. Inspire students through interactive tournaments, leaderboards, and career-linked rewards."
+    />
+    <meta property="og:url" content="https://kgamify.in/partnerships/institutes" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/institute_partnership_hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Institute Partnerships" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Institute Partnership Opportunities | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Partner with kGamify to provide gamified academic experiences. Boost engagement, build leadership, and reward top talent in your institute."
+    />
+    <meta name="twitter:image" content="/institute_partnership_hero.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Institute Partnership Opportunities | kGamify",
+                "url": "https://kgamify.in/partnerships/institutes",
+                "description":
+                    "kGamify collaborates with institutes to bring competitive, gamified learning experiences. Join us to motivate students and promote academic excellence.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
         <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
             <div className="bg-orange-50">
@@ -205,5 +265,6 @@ export default function InstitutePartnershipPage() {
                 </Link>
             </section>
         </div>
+        </>
     );
 }

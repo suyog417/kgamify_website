@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import Image from "next/image"
 import { Phone, Mail, MapPin } from "lucide-react"
 import ReCAPTCHA from "react-google-recaptcha"
+import Head from "next/head"
 
 export default function ContactsPage() {
   const [loading, setLoading] = useState(false);
@@ -76,6 +77,78 @@ export default function ContactsPage() {
   };
 
   return (
+    <>
+    <Head>
+    <title>Contact Us | kGamify - Reach Our Team</title>
+    <meta
+        name="description"
+        content="Have questions or need support? Contact the kGamify team for inquiries, collaborations, or help with the platform."
+    />
+    <meta
+        name="keywords"
+        content="contact kGamify, get in touch, customer support, business inquiry, brand partnership, feedback, help, support"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/contact" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Contact Us | kGamify" />
+    <meta
+        property="og:description"
+        content="Reach out to the kGamify team for support, feedback, or partnership opportunities. We're here to help!"
+    />
+    <meta property="og:url" content="https://kgamify.in/contact" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/contact_us_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Contact kGamify Team" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Us | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Looking to connect with us? Fill out our contact form or reach us via email for support or partnership inquiries."
+    />
+    <meta name="twitter:image" content="/contact_us_preview.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "url": "https://kgamify.in/contact",
+                "mainEntity": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in",
+                    "contactPoint": [
+                        {
+                            "@type": "ContactPoint",
+                            "telephone": "+91-XXXXXXXXXX",
+                            "contactType": "Customer Support",
+                            "email": "support@kgamify.in",
+                            "areaServed": "IN",
+                            "availableLanguage": ["English", "Hindi"]
+                        },
+                        {
+                            "@type": "ContactPoint",
+                            "contactType": "Partnership Inquiries",
+                            "email": "partnerships@kgamify.in",
+                            "availableLanguage": ["English"]
+                        }
+                    ]
+                }
+            })
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="bg-orange-50">
@@ -265,5 +338,6 @@ export default function ContactsPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

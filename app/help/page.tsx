@@ -15,6 +15,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react"
+import Head from "next/head"
 
 interface HelpArticle {
   id: string
@@ -47,16 +48,16 @@ export default function HelpCenterPage() {
   const helpArticles: HelpArticle[] = [
     {
       id: "1",
-      title: "How to Create Your kGamify Account",
+      title: "How to Create a kGamify Account: Step-by-Step Guide",
       category: "getting-started",
-      content: "Learn how to sign up and set up your kGamify account in just a few simple steps.",
+      content: `Looking to join kGamify? Follow these quick and easy steps to create your kGamify account and start your gamified learning journey today.\n\nThis guide will help you sign up and set up your profile in just a few minutes.\n\nStep 1: Visit the kGamify website\nStep 2: Click on 'Sign Up'\nStep 3: Fill in your details\nStep 4: Verify your email\nStep 5: Complete your profile setup\n\nOnce you've completed these steps, you'll have full access to all kGamify features and can start participating in championships and earning rewards.`,
       tags: ["account", "signup", "registration"],
     },
     {
       id: "2",
       title: "Downloading and Installing the Mobile App",
       category: "mobile-app",
-      content: "Step-by-step guide to download and install kGamify on your Android or iOS device.",
+      content: `Step-by-step guide to download and install kGamify on your Android or iOS device.<a href='/help/download-and-install-the-mobile-app'>Read More</a>`,
       tags: ["download", "install", "mobile", "android", "ios"],
     },
     {
@@ -180,6 +181,74 @@ export default function HelpCenterPage() {
   })
 
   return (
+    <>
+    <Head>
+    <title>Help Center | kGamify - Support & FAQs</title>
+    <meta
+        name="description"
+        content="Need help with kGamify? Visit our Help Center for answers to common questions, troubleshooting guides, and support resources."
+    />
+    <meta
+        name="keywords"
+        content="kGamify help center, support, FAQs, troubleshooting, customer support, gamification help, contact support, kGamify FAQs"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/help-center" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Help Center | kGamify" />
+    <meta
+        property="og:description"
+        content="Find answers to your questions and get support for using kGamify. Access FAQs, how-to guides, and customer service help."
+    />
+    <meta property="og:url" content="https://kgamify.in/help-center" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/help_center_hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Help Center" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Help Center | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Need help with kGamify? Explore our Help Center for answers to frequently asked questions and support articles."
+    />
+    <meta name="twitter:image" content="/help_center_hero.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I create a kGamify account?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You can sign up for a kGamify account by visiting our sign-up page and filling in your details. Once verified, you’ll have access to our platform features."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How can I contact support?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You can reach our support team via the contact form on this page or by emailing support@kgamify.in."
+                        }
+                    }
+                ]
+            }),
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-50 to-white py-16">
@@ -279,7 +348,7 @@ export default function HelpCenterPage() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <h3 className="text-lg font-bold text-gray-900 mb-2">{article.title}</h3>
-                            <p className="text-gray-600 mb-3">{article.content}</p>
+                            {article.content}
                             <div className="flex flex-wrap gap-2">
                               {article.tags.map((tag) => (
                                 <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
@@ -501,5 +570,7 @@ export default function HelpCenterPage() {
         </div>
       </section>
     </div>
+    </>
+    
   )
 }

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useState } from "react";
 import PartnerCard, { PartnerCardItem } from "@/components/reusable-components/benefits-cards";
 import { Briefcase, Gamepad2, GraduationCap, Handshake, Trophy } from "lucide-react";
+import Head from "next/head";
 
 
 const tabs = [
@@ -187,6 +188,64 @@ export default function FeaturesPage() {
   const content = tabContent[activeTab];
   
   return (
+    <>
+    <Head>
+    <title>Key Features | kGamify - Gamified Competition Platform</title>
+    <meta
+        name="description"
+        content="Discover the powerful features of kGamify that make learning competitive and rewarding. Explore tournaments, leaderboards, badges, and real-world opportunities."
+    />
+    <meta
+        name="keywords"
+        content="kGamify features, gamified learning, quiz tournaments, leaderboards, badges, rewards, student engagement, edtech platform"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/features" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Key Features | kGamify" />
+    <meta
+        property="og:description"
+        content="Explore the features that power kGamify’s gamified learning experience—from real-time tournaments to badges and career rewards."
+    />
+    <meta property="og:url" content="https://kgamify.in/features" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/features_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Features Overview" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Key Features | kGamify" />
+    <meta
+        name="twitter:description"
+        content="From competitive tournaments to real-world rewards—learn how kGamify transforms learning into a gamified experience."
+    />
+    <meta name="twitter:image" content="/features_preview.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Key Features | kGamify",
+                "url": "https://kgamify.in/features",
+                "description": "A detailed overview of kGamify's core features, including gamified tournaments, leaderboards, reward systems, and analytics.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="bg-orange-50 py-16">
@@ -327,5 +386,6 @@ export default function FeaturesPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

@@ -1,9 +1,69 @@
 import CorporateHeroSection from "@/components/reusable-components/corporate-hero";
 import { BadgeCheck, BarChart3, ActivitySquare, Timer, Shuffle } from "lucide-react";
+import Head from "next/head";
 import Link from "next/link";
 
 export default function CorporatePartnershipPage() {
     return (
+        <>
+        <Head>
+    <title>Corporate Partnership Opportunities | kGamify - Engage Talent Through Gamification</title>
+    <meta
+        name="description"
+        content="Partner with kGamify to engage future talent, promote your brand, and drive recruitment through gamified learning experiences and campus challenges."
+    />
+    <meta
+        name="keywords"
+        content="corporate partnerships, employer branding, gamified hiring, campus challenges, recruitment solutions, kGamify for business, talent engagement, educational gamification"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/partnerships/corporate" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Corporate Partnership Opportunities | kGamify" />
+    <meta
+        property="og:description"
+        content="Explore strategic corporate partnerships with kGamify. Drive talent engagement, build brand visibility, and recruit top-performing students through gamified competitions."
+    />
+    <meta property="og:url" content="https://kgamify.in/partnerships/corporate" />
+    <meta property="og:site_name" content="kGamify" />
+    {/* <meta property="og:image" content="/corporate_partnership_hero.png" /> */}
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Corporate Partnership Opportunities" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Corporate Partnership Opportunities | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Partner with kGamify to tap into student talent, host branded challenges, and build future-ready recruitment funnels using gamification."
+    />
+    {/* <meta name="twitter:image" content="/corporate_partnership_hero.png" /> */}
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Corporate Partnership Opportunities | kGamify",
+                "url": "https://kgamify.in/partnerships/corporate",
+                "description":
+                    "Corporate partners collaborate with kGamify to engage top student talent, promote employer branding, and run innovative recruitment campaigns through gamified competitions.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
         <div className=" bg-gray-50">
             {/* Hero Section */}
             <div className="bg-orange-50 ">
@@ -102,5 +162,7 @@ export default function CorporatePartnershipPage() {
             </section>
 
         </div>
+        </>
+
     );
 }
