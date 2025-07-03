@@ -435,7 +435,7 @@ export default function DownloadPage() {
       {/* Download Options */}
       <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="flex flex-col gap-8 md:grid md:grid-cols-2">
             {/* Android Download */}
             <div className="bg-white rounded-lg p-8 shadow-md">
               <div className="flex items-center mb-6">
@@ -465,7 +465,7 @@ export default function DownloadPage() {
               <div className="flex mb-6">
                 <div className="w-1/2 pr-4">
                   <h4 className="font-bold mb-2">Scan QR Code</h4>
-                  <div className="p-4 rounded-lg">
+                  <div className="md:p-4 rounded-lg">
                   <Canvas
                       text={'https://play.google.com/store/apps/details?id=com.app.kgamify&pcampaignid=web_share'}
                       options={{

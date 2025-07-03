@@ -8,6 +8,8 @@ import Link from "next/link"
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
+      <div className="absolute top-1/4 left-1/4 w-64 h-48 md:w-96 md:h-96 bg-orange-500/10 rounded-full blur-xl md:blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-48 md:w-96 md:h-96 bg-orange-500/10 rounded-full blur-xl md:blur-3xl animate-pulse delay-1000" />
       {/* Hero Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto grid gap-8 px-4 md:grid-cols-2">
