@@ -1,5 +1,66 @@
+import Head from "next/head";
+
 export default function TermsOfServicePage() {
   return (
+    <>
+    <Head>
+    <title>Terms of Use | kGamify</title>
+    <meta
+        name="description"
+        content="Review the Terms of Use for kGamify. Understand your rights, responsibilities, and the rules for using our platform, services, and mobile app."
+    />
+    <meta
+        name="keywords"
+        content="kGamify terms of use, user agreement, platform rules, app terms, legal terms, kGamify policy, usage agreement"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/terms-of-use" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Terms of Use | kGamify" />
+    <meta
+        property="og:description"
+        content="Read kGamify's Terms of Use to understand the guidelines and conditions for accessing and using our platform and services."
+    />
+    <meta property="og:url" content="https://kgamify.in/terms-of-use" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/terms_of_use_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Terms of Use" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Terms of Use | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Understand the terms and conditions of using the kGamify platform, including responsibilities, rights, and usage rules."
+    />
+    <meta name="twitter:image" content="/terms_of_use_preview.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Terms of Use | kGamify",
+                "url": "https://kgamify.in/terms-of-use",
+                "description":
+                    "These Terms of Use outline the rules and conditions that govern access to and use of the kGamify platform and services.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-7xl">
@@ -106,5 +167,6 @@ export default function TermsOfServicePage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

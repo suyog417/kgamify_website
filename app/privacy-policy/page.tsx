@@ -1,7 +1,67 @@
 import { Globe, Mail } from "lucide-react";
+import Head from "next/head";
 
 export default function PrivacyPolicyPage() {
   return (
+    <>
+    <Head>
+    <title>Privacy Policy | kGamify</title>
+    <meta
+        name="description"
+        content="Read the privacy policy of kGamify to understand how we collect, use, and protect your personal data. We value your trust and are committed to safeguarding your information."
+    />
+    <meta
+        name="keywords"
+        content="kGamify privacy policy, data protection, personal information, GDPR compliance, user data, app privacy, cookies, security"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kgamify.in/privacy-policy" />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Privacy Policy | kGamify" />
+    <meta
+        property="og:description"
+        content="Learn how kGamify handles your personal data, including collection, usage, and protection practices."
+    />
+    <meta property="og:url" content="https://kgamify.in/privacy-policy" />
+    <meta property="og:site_name" content="kGamify" />
+    <meta property="og:image" content="/privacy_policy_preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kGamify Privacy Policy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy Policy | kGamify" />
+    <meta
+        name="twitter:description"
+        content="Find out how your personal data is handled, stored, and secured at kGamify. We respect your privacy and follow best practices."
+    />
+    <meta name="twitter:image" content="/privacy_policy_preview.png" />
+
+    {/* Structured Data */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Privacy Policy | kGamify",
+                "url": "https://kgamify.in/privacy-policy",
+                "description":
+                    "This privacy policy outlines how kGamify collects, uses, and protects your personal information in compliance with privacy regulations.",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "kGamify",
+                    "url": "https://kgamify.in"
+                }
+            })
+        }}
+    />
+</Head>
+
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-7xl">
@@ -92,5 +152,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
