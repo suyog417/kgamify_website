@@ -1,0 +1,67 @@
+# This robots.txt file provides instructions to web crawlers (bots).
+# It's used to manage crawler traffic to your site and to prevent
+# crawling of private or duplicate content.
+# For more information, see: http://www.robotstxt.org/orig.html
+
+# ----------------------------------------------------------------------
+# Rules for Specific Good Bots
+# ----------------------------------------------------------------------
+
+# We allow major search engines to crawl everything, but block
+# specific paths that are not useful for them.
+
+User-agent: Googlebot
+Disallow: /api/
+Disallow: /_next/
+# Allow crawling of all other content
+Allow: /
+
+User-agent: Bingbot
+Disallow: /api/
+Disallow: /_next/
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Disallow: /api/
+Disallow: /_next/
+Allow: /
+
+# ----------------------------------------------------------------------
+# General Rules for All Other Bots
+# ----------------------------------------------------------------------
+
+# The following rules apply to all other user agents that are not
+# specified above.
+
+User-agent: *
+# Disallow directories that typically contain private or non-public information.
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /profile/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /login
+Disallow: /register
+
+# Disallow Next.js internal build/static folders.
+Disallow: /_next/
+
+# Disallow crawling of on-site search result pages.
+Disallow: /search/
+
+# Disallow crawling of URLs with parameters that create duplicate content
+# but don't add value to search indexes.
+Disallow: /*?utm_
+Disallow: /*?session_id=
+Disallow: /*?ref=
+
+# ----------------------------------------------------------------------
+# Sitemap
+# ----------------------------------------------------------------------
+
+# Point all crawlers to the XML sitemap.
+Sitemap: https://kgamify.in/sitemap.xml
+

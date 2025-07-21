@@ -1,0 +1,597 @@
+"use client"
+
+import { ReactElement, useState } from "react"
+import Link from "next/link"
+import {
+  Search,
+  Book,
+  Users,
+  Smartphone,
+  Settings,
+  Trophy,
+  ChevronRight,
+  MessageCircle,
+  Mail,
+  Phone,
+} from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+
+interface HelpArticle {
+  id: string
+  title: string
+  category: string
+  content: ReactElement | string
+  tags: string[]
+}
+
+interface FAQ {
+  id: string
+  question: string
+  answer: string
+  category: string
+}
+
+export default function HelpCenterPage() {
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [expandedFAQ, setExpandedFAQ] = useState<string | null>(null)
+
+  const categories = [
+    { id: "all", name: "All Topics", icon: Book, color: "bg-gray-100 text-gray-600" },
+    { id: "getting-started", name: "Getting Started", icon: Users, color: "bg-blue-100 text-blue-600" },
+    { id: "mobile-app", name: "Mobile App", icon: Smartphone, color: "bg-green-100 text-green-600" },
+    { id: "account", name: "Account & Settings", icon: Settings, color: "bg-purple-100 text-purple-600" },
+    { id: "competitions", name: "Competitions", icon: Trophy, color: "bg-orange-100 text-orange-600" },
+  ]
+
+  const helpArticles: HelpArticle[] = [
+  {
+    id: "1",
+    title: "How to Create a kGamify Account: Step-by-Step Guide",
+    category: "getting-started",
+    content: (
+      <p>
+        Looking to join kGamify? Follow these quick and easy steps to create your kGamify account and start your gamified learning journey today.
+        <br />
+        This guide will help you sign up and set up your profile in just a few minutes.
+        <br />
+        <strong>Step 1:</strong> Visit the kGamify website
+        <br />
+        <strong>Step 2:</strong> Click on 'Sign Up'
+        <br />
+        <strong>Step 3:</strong> Fill in your details
+        <br />
+        <strong>Step 4:</strong> Verify your email
+        <br />
+        <strong>Step 5:</strong> Complete your profile setup
+        <br />
+        Once you've completed these steps, you'll have full access to all kGamify features and can start participating in championships and earning rewards.
+      </p>
+    ),
+    tags: ["account", "signup", "registration"],
+  },
+  {
+    id: "2",
+    title: "How to Download and Install the kGamify Mobile App on Android & iOS",
+    category: "mobile-app",
+    content: (
+      <section>
+        <p>
+          Get started with <strong>kGamify</strong> in minutes! Follow this step-by-step guide to
+          <strong> download and install the kGamify mobile app</strong> on your Android or iOS device. Whether you're using <em>Google Play</em> or the <em>App Store</em>, we’ll walk you through the process to start your gamified learning experience seamlessly.
+        </p>
+        <h2>For Android Users:</h2>
+        <ol className="list-decimal ml-12">
+          <li>Open the <strong>Google Play Store</strong> on your Android device.</li>
+          <li>In the search bar, type <strong>kGamify</strong> and tap the search icon.</li>
+          <li>Look for the app with the kGamify logo and tap on it.</li>
+          <li>Tap the <strong>Install</strong> button to download the app.</li>
+          <li>Once installed, tap <strong>Open</strong> to launch the app.</li>
+          <li>Create your account or log in to get started.</li>
+        </ol>
+        <p>
+          Now you’re all set to explore competitions, earn rewards, and level up your skills with <strong>kGamify</strong>!
+        </p>
+      </section>
+    ),
+    tags: ["download", "install", "mobile", "android", "ios"],
+  },
+  {
+    id: "3",
+    title: "Understanding Your Dashboard",
+    category: "getting-started",
+    content: <p>Navigate your personalized dashboard and understand all the features available to you.</p>,
+    tags: ["dashboard", "navigation", "features"],
+  },
+  {
+    id: "4", // Changed duplicate ID from 2 to 4
+    title: "Joining Your First Competition",
+    category: "getting-started",
+    content: (
+      <section>
+        <p><strong>Joining Your First Competition</strong></p>
+        <p>Everything you need to know about participating in kGamify competitions and challenges.</p>
+        <p><strong>Understanding Game Modes</strong><br />kGamify offers two types of game modes for championships:</p>
+        <p><strong>Quick Hit:</strong> Perfect for practice sessions where you can familiarize yourself with the format and questions without any pressure.</p>
+        <p><strong>Play and Win:</strong> The competitive mode where you can win actual prizes and rewards based on your performance.</p>
+        <p><strong>Championship Access</strong><br />Anyone can play any championship - there are no minimum qualification requirements. This means you can jump into any competition that interests you, regardless of your experience level.</p>
+        <p><strong>Important Rules</strong><br />You can play each championship only once, regardless of which game mode you choose. Make sure to decide whether you want to practice first with Quick Hit or go straight for the prizes with Play and Win.</p>
+        <p><strong>How to Start Playing</strong><br />Simply click on any championship that catches your interest. A popup will appear showing you the rules and details for that specific championship. Take time to read through the rules carefully, then click the 'Play' button at the bottom to start your championship experience.</p>
+        <p>Choose your game mode wisely and enjoy the competitive experience that kGamify has to offer!</p>
+      </section>
+    ),
+    tags: ["competition", "challenges", "participation", "getting-started"],
+  },
+  {
+    id: "5",
+    title: "Managing Your Profile Settings",
+    category: "account",
+    content: <p>Customize your profile, update personal information, and manage privacy settings.</p>,
+    tags: ["profile", "settings", "privacy", "personal"],
+  },
+  {
+    id: "6",
+    title: "Earning and Redeeming Rewards",
+    category: "competitions",
+    content: <p>Learn how to earn points, unlock achievements, and redeem rewards for your performance.</p>,
+    tags: ["rewards", "points", "achievements", "redeem"],
+  },
+  {
+    id: "7",
+    title: "Troubleshooting App Issues",
+    category: "mobile-app",
+    content: <p>Common solutions for app crashes, login problems, and performance issues.</p>,
+    tags: ["troubleshooting", "bugs", "crashes", "performance"],
+  },
+  {
+    id: "8",
+    title: "Syncing Progress Across Devices",
+    category: "account",
+    content: <p>How to sync your learning progress and achievements across multiple devices.</p>,
+    tags: ["sync", "devices", "progress", "cloud"],
+  },
+];
+
+  const faqs: FAQ[] = [
+    {
+      id: "1",
+      question: "Is kGamify free to use?",
+      answer:
+        "Yes, kGamify offers a free tier with access to basic features and competitions. We also offer premium subscriptions with additional features, advanced analytics, and exclusive content.",
+      category: "getting-started",
+    },
+    {
+      id: "2",
+      question: "What devices are supported?",
+      answer:
+        "kGamify is available on Android devices (6.0+), with iOS support coming soon. You can also access our platform through any modern web browser on desktop or mobile.",
+      category: "mobile-app",
+    },
+    {
+      id: "3",
+      question: "How do I reset my password?",
+      answer:
+        "Click on 'Forgot Password' on the login screen, enter your email address, and follow the instructions sent to your email to reset your password.",
+      category: "account",
+    },
+    {
+      id: "4",
+      question: "Can I participate in multiple competitions simultaneously?",
+      answer:
+        "Yes, you can join multiple competitions at the same time. However, some exclusive competitions may have participation limits or requirements.",
+      category: "competitions",
+    },
+    {
+      id: "5",
+      question: "How are winners determined in competitions?",
+      answer:
+        "Winners are determined based on various factors including accuracy, speed, consistency, and overall performance. Each competition has specific scoring criteria explained in the competition details.",
+      category: "competitions",
+    },
+    {
+      id: "6",
+      question: "What should I do if the app crashes?",
+      answer:
+        "First, try restarting the app. If the problem persists, check for app updates in your app store. If issues continue, please contact our support team with details about your device and the error.",
+      category: "mobile-app",
+    },
+    {
+      id: "7",
+      question: "How do I delete my account?",
+      answer:
+        "To delete your account, go to Settings > Account > Delete Account. Please note that this action is irreversible and will permanently remove all your data and progress.",
+      category: "account",
+    },
+    {
+      id: "8",
+      question: "Can I use kGamify offline?",
+      answer:
+        "Some features of kGamify work offline, including downloaded content and practice modes. However, competitions and real-time features require an internet connection.",
+      category: "mobile-app",
+    },
+  ]
+
+  const filteredArticles = helpArticles.filter((article) => {
+    const matchesSearch =
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.content.toString().toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    const matchesCategory = selectedCategory === "all" || article.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+
+  const filteredFAQs = faqs.filter((faq) => {
+    const matchesSearch =
+      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = selectedCategory === "all" || faq.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+  const [expandedArticle, setExpandedArticle] = useState<string | null>(null);
+
+  return (
+    <>
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-orange-50 to-white py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-8">
+              <h1 className="mb-4 text-4xl font-bold text-gray-900">Help Center</h1>
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+                Find answers to your questions, learn how to use kGamify effectively, and get the support you need.
+              </p>
+            </div>
+
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search for help articles, FAQs, or topics..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 rounded-lg border border-gray-300 focus:border-orange-500 focus:outline-none text-lg"
+                />
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto">
+              <div className="bg-white rounded-lg p-4 shadow-sm text-center">
+                <div className="text-2xl font-bold text-orange-500">50+</div>
+                <div className="text-sm text-gray-600">Help Articles</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm text-center">
+                <div className="text-2xl font-bold text-orange-500">24/7</div>
+                <div className="text-sm text-gray-600">Support Available</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm text-center">
+                <div className="text-2xl font-bold text-orange-500">95%</div>
+                <div className="text-sm text-gray-600">Issues Resolved</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Categories */}
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center gap-4">
+              {categories.map((category) => {
+                const IconComponent = category.icon
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition ${selectedCategory === category.id ? "bg-orange-500 text-white" : `${category.color} hover:opacity-80`
+                      }`}
+                  >
+                    <IconComponent size={18} />
+                    <span className="font-medium">{category.name}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-8 lg:grid-cols-3">
+              {/* Help Articles */}
+               <div className="lg:col-span-2">
+    {/* Help Articles Section */}
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        Help Articles
+        {searchQuery && (
+          <span className="text-lg font-normal text-gray-600 ml-2">
+            ({filteredArticles.length} results for "{searchQuery}")
+          </span>
+        )}
+      </h2>
+
+      {filteredArticles.length === 0 ? (
+        <div className="text-center py-12 bg-white rounded-lg shadow-sm">
+          <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Search className="text-gray-400" size={32} />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">No articles found</h3>
+          <p className="text-gray-600">
+            Try adjusting your search terms or browse by category.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {filteredArticles.map((article) => {
+            const isExpanded = expandedArticle === article.id;
+            const category = categories.find((c) => c.id === article.category);
+
+            return (
+              <div key={article.id} className="bg-white rounded-lg shadow-sm overflow-hidden transition-shadow hover:shadow-md">
+                <button
+                  onClick={() => setExpandedArticle(isExpanded ? null : article.id)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between"
+                >
+                  <div className="flex-1">
+                    {category && (
+                      <span className={`text-xs font-bold uppercase px-2 py-1 rounded-full ${category.color}`}>
+                        {category.name}
+                      </span>
+                    )}
+                    <h3 className="text-lg font-bold text-gray-900 mt-2">{article.title}</h3>
+                  </div>
+                  <motion.div animate={{ rotate: isExpanded ? 90 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronRight className="text-gray-500 ml-4 flex-shrink-0" size={20} />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.section
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto', transition: { duration: 0.3, ease: 'easeInOut' } }}
+                      exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: 'easeInOut' } }}
+                      className="px-6"
+                    >
+                      <div className="pb-6 prose prose-orange max-w-none text-gray-700">
+                        {article.content}
+                        <div className="flex flex-wrap gap-2 mt-4 not-prose">
+                          {article.tags.map((tag) => (
+                            <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.section>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+
+    {/* FAQs Section */}
+    <div>
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        Frequently Asked Questions
+        {searchQuery && (
+          <span className="text-lg font-normal text-gray-600 ml-2">({filteredFAQs.length} results)</span>
+        )}
+      </h2>
+
+      {filteredFAQs.length === 0 ? (
+        <div className="text-center py-8 bg-white rounded-lg shadow-sm">
+          <p className="text-gray-600">No FAQs match your search criteria.</p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {filteredFAQs.map((faq) => {
+            const isExpanded = expandedFAQ === faq.id;
+            return (
+              <div key={faq.id} className="bg-white rounded-lg shadow-sm overflow-hidden transition-shadow hover:shadow-md">
+                <button
+                  onClick={() => setExpandedFAQ(isExpanded ? null : faq.id)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between"
+                >
+                  <h3 className="font-bold text-gray-900 flex-1">{faq.question}</h3>
+                  <motion.div animate={{ rotate: isExpanded ? 90 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronRight className="text-gray-500 ml-4 flex-shrink-0" size={20} />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.section
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto', transition: { duration: 0.3, ease: 'easeInOut' } }}
+                      exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: 'easeInOut' } }}
+                    >
+                      <div className="px-6 pb-4">
+                        <p className="text-gray-700">{faq.answer}</p>
+                      </div>
+                    </motion.section>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </div>
+
+              {/* Sidebar */}
+              <div className="space-y-8">
+                {/* Contact Support */}
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Need More Help?</h3>
+                  <p className="text-gray-600 mb-6">
+                    Can't find what you're looking for? Our support team is here to help you.
+                  </p>
+
+                  <div className="space-y-4">
+                    <Link
+                      href="/contacts"
+                      className="flex items-center space-x-3 p-3 bg-orange-50 rounded-lg hover:bg-orange-100 transition"
+                    >
+                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <MessageCircle className="text-orange-500" size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Live Chat</div>
+                        <div className="text-sm text-gray-600">Get instant help</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="mailto:support@kgamify.in"
+                      className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                    >
+                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <Mail className="text-gray-500" size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Email Support</div>
+                        <div className="text-sm text-gray-600">support@kgamify.in</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="tel:+918879688067"
+                      className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                    >
+                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                        <Phone className="text-gray-500" size={20} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Phone Support</div>
+                        <div className="text-sm text-gray-600">+91 8879688067</div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Popular Articles */}
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Popular Articles</h3>
+                  <div className="space-y-3">
+                    {helpArticles.slice(0, 5).map((article) => (
+                      <Link key={article.id} href="#" className="block p-3 rounded-lg hover:bg-gray-50 transition">
+                        <div className="font-medium text-gray-900 text-sm mb-1">{article.title}</div>
+                        <div className="text-xs text-gray-600 capitalize">{article.category.replace("-", " ")}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* System Status */}
+                <div className="bg-white rounded-lg p-6 shadow-sm">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">System Status</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-700">Mobile App</span>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-green-600">Operational</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-700">Web Platform</span>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-green-600">Operational</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-700">Competitions</span>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-green-600">Operational</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-700">User Accounts</span>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-green-600">Operational</span>
+                      </div>
+                    </div>
+                  </div>
+                  <Link
+                    href="#"
+                    className="inline-flex items-center text-orange-500 font-medium hover:text-orange-600 mt-4"
+                  >
+                    View Status Page <ChevronRight size={16} className="ml-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Community</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Connect with other kGamify users, share tips, and get help from our community of learners and educators.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {/* Community Forum */}
+              <div className="bg-gray-50 rounded-lg p-6 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="text-blue-500" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Community Forum</h3>
+                <p className="text-gray-600 mb-4">
+                  Ask questions, share experiences, and learn from other kGamify users.
+                </p>
+                <Link href="#" className="inline-flex items-center text-blue-500 font-medium hover:text-blue-600">
+                  Join Forum <ChevronRight size={16} className="ml-1" />
+                </Link>
+              </div>
+
+              {/* Video Tutorials */}
+              <div className="bg-gray-50 rounded-lg p-6 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Book className="text-green-500" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Video Tutorials</h3>
+                <p className="text-gray-600 mb-4">
+                  Watch step-by-step video guides to master kGamify features and tools.
+                </p>
+                <Link href="#" className="inline-flex items-center text-green-500 font-medium hover:text-green-600">
+                  Watch Videos <ChevronRight size={16} className="ml-1" />
+                </Link>
+              </div>
+
+              {/* Feature Requests */}
+              <div className="bg-gray-50 rounded-lg p-6 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle className="text-purple-500" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Feature Requests</h3>
+                <p className="text-gray-600 mb-4">
+                  Suggest new features and improvements to help us make kGamify even better.
+                </p>
+                <Link href="#" className="inline-flex items-center text-purple-500 font-medium hover:text-purple-600">
+                  Submit Ideas <ChevronRight size={16} className="ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+
+  )
+}

@@ -1,0 +1,18 @@
+{
+  "name": "kGamify - Learn Through Play & Win Exciting Rewards",
+  "short_name": "kGamify",
+  "description": "Experience the thrill of championships and win exciting rewards — fun and growth for everyone!",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff8200",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/kgamify_logo.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
+}
