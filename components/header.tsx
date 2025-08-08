@@ -89,11 +89,11 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-[#ff8200] text-white">
+    <header className="bg-white text-black">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center">
           <img
-            src="/kgamify_logo.png"
+            src="/kGamify_inverted_colors.svg"
             alt="kGamify Logo"
             width={56}
             height={56}
@@ -106,7 +106,7 @@ export default function Header() {
           <Link
             href="/"
             className={`font-medium transition-colors ${
-              isActive("/") ? "text-white border-b-2 border-white" : "hover:text-orange-200"
+              isActive("/") ? " border-b-2 border-orange-500" : "hover:text-orange-500"
             }`}
           >
             Home
@@ -114,7 +114,7 @@ export default function Header() {
           <Link
             href="/features"
             className={`font-medium transition-colors ${
-              isActive("/features") ? "text-white border-b-2 border-white" : "hover:text-orange-200"
+              isActive("/features") ? " border-b-2 border-orange-500" : "hover:text-orange-500"
             }`}
           >
             Features
@@ -122,7 +122,7 @@ export default function Header() {
           <Link
             href="/gallery"
             className={`font-medium transition-colors ${
-              isActive("/gallery") ? "text-white border-b-2 border-white" : "hover:text-orange-200"
+              isActive("/gallery") ? " border-b-2 border-orange-500" : "hover:text-orange-500"
             }`}
           >
             Gallery
@@ -131,7 +131,7 @@ export default function Header() {
           <Link
             href="/contacts"
             className={`font-medium transition-colors ${
-              isActive("/contacts") ? "text-white border-b-2 border-white" : "hover:text-orange-200"
+              isActive("/contacts") ? " border-b-2 border-orange-500" : "hover:text-orange-500"
             }`}
           >
             Contact Us
@@ -139,9 +139,9 @@ export default function Header() {
         </nav>
 
         {/* Download Button */}
-        <button className="hidden rounded-md border border-white bg-transparent px-6  py-2 text-sm font-medium text-white transition hover:bg-white hover:text-orange-500 md:block">
+        <button className="hidden rounded-md border border-white bg-orange-500 px-6  py-2 text-sm font-medium text-white transition hover:bg-white hover:text-orange-500 md:block hover:border-orange-500">
           <Link href="/download" className="font-bold hover:text-orange-500 flex items-center gap-2">
-            <Download size={20}/>Download Now
+            Download Now
           </Link>
         </button>
 
